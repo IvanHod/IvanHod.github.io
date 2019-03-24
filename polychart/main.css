@@ -78,7 +78,7 @@ div.polychart div.navigation-border {
     border-left: 10px solid rgba(0, 0, 0, 0.3);
     border-right: 10px solid rgba(0, 0, 0, 0.3);
     position: absolute;
-    width: 580px;
+    width: 100%;
     height: 89%;
     cursor: pointer;
 }

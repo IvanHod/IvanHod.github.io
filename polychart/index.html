@@ -12,11 +12,17 @@
 <div id="charts"></div>
 
 
-<script src="jquery-3.3.1.min.js"></script>
-<!--<script src="index.js"></script>-->
+<script src="/polychart/jquery-3.3.1.min.js"></script>
+<script src="/polychart/polychart.js"></script>
 <script>
+    let charts = document.getElementById('charts');
+
     $.getJSON('/polychart/chart_data.json').done(function (json) {
-        console.log(json)
+        json.forEach(function (data) {
+            let chartBlock = $('<div>', {'id': 'chart', 'class': 'polychart'}).appendTo(charts);
+
+            Polychart.create(chartBlock[0], 600, data);
+        });
     })
 </script>
 </body>
