@@ -21,7 +21,7 @@
         json.forEach(function (data) {
             let chartBlock = $('<div>', {'id': 'chart', 'class': 'polychart'}).appendTo(charts);
 
-            Polychart.create(chartBlock[0], 600, data);
+            new Polychart(chartBlock[0], 600, data);
         });
     })
 </script>
