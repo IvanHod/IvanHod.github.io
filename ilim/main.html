@@ -119,7 +119,7 @@
 				<div class="container-fluid p-0">
 					<h1 class="h1 text-center mb-5">Поставки сырья</h1>
 					<div class="row mt-3">
-						<div class="col-10">
+						<div class="col-sm-12 col-lg-10 order-2 order-lg-1">
 							<div class="row">
 								<div class="col-12 col-lg-6">
 									<div class="chart w-100">
@@ -143,7 +143,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-2">
+						<div class="col-sm-12 col-lg-2 order-1 order-lg-2">
 							<div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Период</h5>
@@ -173,11 +173,11 @@
 								</div>
 								<div class="card-body">
 									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" checked value="м3">
+										<input name="units" type="radio" class="custom-control-input" checked value="dlvrd" data-text="м3">
 										<span class="custom-control-label">Объем, м<sup>3</sup></span>
 									</label>
 									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" value="руб.">
+										<input name="units" type="radio" class="custom-control-input" value="prc" data-text="тыс. руб">
 										<span class="custom-control-label">Цена, тыс. руб</span>
 									</label>
 								</div>
@@ -227,16 +227,24 @@
 
 			createIntervalFilter();
 			
-			ApexChartGroups(['#apexcharts-column-0', '#apexcharts-column-1', '#apexcharts-column-2', '#apexcharts-column-3', '#apexcharts-legend']);
+			let containers = ['#apexcharts-column-0', '#apexcharts-column-1', '#apexcharts-column-2', '#apexcharts-column-3', '#apexcharts-legend'];
+			let columns = ['{}_sft_frst', '{}_hrd_frst', '{}_sft_chps', '{}_hrd_chps']
+			var settings = [
+				{'supply_ilim_optmzd': columns},
+				{'supply_ilim_base': columns},
+				{'supply_partners_optmzd': columns},
+				{'supply_partners_base': columns}
+			]
+			ApexChartGroups(containers, settings);
 			
 			$(document).on('change', 'select[name="year"]', function() {
 				createIntervalFilter();
 
-				redrawGroup();
+				redrawGroup(settings);
 			});
 
 			$(document).on('change', 'select[name="month"]', function() {
-				redrawGroup();
+				redrawGroup(settings);
 			});
 
 			$(document).on('click', 'input[name="units"]', function() {
@@ -244,7 +252,7 @@
 
 				$(this).addClass('active').prop("checked", true);
 
-				redrawGroup();
+				redrawGroup(settings);
 			});
 		});
 	</script>
