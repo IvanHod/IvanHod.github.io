@@ -167,12 +167,12 @@
 								</div>
 								<div class="card-body">
 									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" checked value="dlvrd" data-text="м3">
-										<span class="custom-control-label">Объем, м<sup>3</sup></span>
+										<input name="units" type="radio" class="custom-control-input" checked value="dlvrd" data-text="тыс. м3">
+										<span class="custom-control-label">Объем, тыс. м<sup>3</sup></span>
 									</label>
 									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" value="prc" data-text="тыс. руб">
-										<span class="custom-control-label">Цена, тыс. руб</span>
+										<input name="units" type="radio" class="custom-control-input" value="dlvrd*prc" data-text="тыс. руб">
+										<span class="custom-control-label">Стоимость, тыс. руб</span>
 									</label>
 								</div>
 							</div>
@@ -217,9 +217,86 @@
 	</div>
 	<script src="js/app.js"></script>
 	<script>
+		var charts = [];
+
+		function redrawGroup(settings) {
+			let val = $('input[name="units"]:checked').val().split('*');
+
+			let s1 = null;
+			if (val.length == 2) {
+				s1 = prepareData(settings, 'date', val[0]);
+				s2 = prepareData(settings, 'date', val[1]);
+				s1.data = Object.keys(s1.data).map(function(i) {
+					return Object.keys(s1.data[i]).map(j => s1.data[i][j] * s2.data[i][j] / 1000)
+				})
+			} else {
+				s1 = prepareData(settings, 'date');
+				s1.data = s1.data.map(v1 => v1.map(v2 => v2 / 1000));
+			}
+
+			for (let i in s1['data']) {
+				charts[i].updateSeries(s1['data'][i]);
+			}
+		}
+
+		function GroupLegend(legendChart, groupCharts) {
+			window._chartGroupsData[legendChart.legend] = groupCharts.map(function(chart) {
+				return {'ctx': chart, 'w': chart.w}
+			});
+		}
+
 		$(function() {
 
 			createIntervalFilter();
+			
+			$(document).on('change', 'select[name="year"]', function() {
+				createIntervalFilter();
+
+				redrawGroup(settings);
+			});
+
+			$(document).on('change', 'select[name="month"]', function() {
+				redrawGroup(settings);
+			});
+
+			$(document).on('click', 'input[name="units"]', function(e) {
+				redrawGroup(settings);
+			});
+
+			var options = {
+				chart: {
+					type: "donut"
+				},
+				plotOptions: {
+					pie: {
+						donut: {
+							labels: {
+								show: true,
+								name: {
+									show: false,
+								},
+								value: {
+									show: true,
+									formatter: function (val) {
+										return Math.floor(val) + ' ' + unitsText;
+									}
+								},
+								total: {
+									show: true,
+									formatter: function (w) {
+										return Math.floor(w.globals.seriesTotals.reduce((a, b) => {
+											return a + b
+										}, 0)) + ' ' + unitsText
+									}
+								}
+							}
+						}
+					}
+				},
+				legend: {
+					show: false,
+				}
+			}
 			
 			let containers = ['#apexcharts-column-0', '#apexcharts-column-1', '#apexcharts-column-2', '#apexcharts-column-3', '#apexcharts-legend'];
 			let columns = ['{}_sft_frst', '{}_hrd_frst', '{}_sft_chps', '{}_hrd_chps']
@@ -229,21 +306,46 @@
 				{'supply_partners_optmzd': columns},
 				{'supply_partners_base': columns}
 			]
-			ApexChartGroups(containers, settings, 'donut');
+
+			let series = prepareData(settings);
+			series.data = series.data.map(v1 => v1.map(v2 => v2 / 1000));
+			options['labels'] = series['labels'].filter(function(item, pos, self) {return self.indexOf(item) == pos});
+
+			let queue = [];
+			for(let i = 0; i < settings.length + 1; i++){
+				let opt = $.extend(true, {}, options);
+
+				opt.series = [];
+				if(i >= settings.length) {
+					opt.plotOptions = {};
+					opt.chart.height = '80px';
+					opt.legend = {show: true, position: 'top'};
+
+				} else {
+					opt.series = series['data'][i];
+				}
+				queue.push(opt);
+			}
 			
-			$(document).on('change', 'select[name="year"]', function() {
-				createIntervalFilter();
-
-				redrawGroup(settings, 'donut');
+			queue.forEach(function(opt, i) {
+				let chart = new ApexCharts(document.querySelector(containers[i]), opt);
+				chart.render();
+				
+				charts.push(chart);
 			});
 
-			$(document).on('change', 'select[name="month"]', function() {
-				redrawGroup(settings, 'donut');
-			});
+			let groupCharts = [];
+			let groupLegend = undefined;
+			for(let i = 0; i < settings.length + 1; i++){
+				if(i >= settings.length) {
+					groupLegend = charts[i];
+				}
+				else {
+					groupCharts.push(charts[i]);
+				}
+			}
 
-			$(document).on('click', 'input[name="units"]', function() {
-				redrawGroup(settings, 'donut');
-			});
+			GroupLegend(groupLegend, groupCharts);
 		});
 	</script>
 </body>
