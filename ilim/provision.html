@@ -85,7 +85,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Инерционный сценарий балансы</h5>
+                                            <h5 class="card-title">Оптимальный сценарий заготовки балансов</h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -98,7 +98,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Оптимизированный сценарий балансы</h5>
+                                            <h5 class="card-title">Фактическая заготовка балансов</h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -111,7 +111,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Инерционный сценарий щепа</h5>
+                                            <h5 class="card-title">Оптимальный сценарий заготовки щепы</h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -124,7 +124,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Оптимизированный сценарий щепа</h5>
+                                            <h5 class="card-title">Фактическая заготовка цепы</h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -283,31 +283,20 @@
 
 			let series = prepareData(settings);
 			
-			options['labels'] = series['labels'].filter(function(item, pos, self) {return self.indexOf(item) == pos});
+			options['labels'] = ['Поставки сырья на комбинат', 'Потребление комбинатом сырья'];
 			options['xaxis']['categories'] = series['xlabels']
 			
 			let queue = [];
-			for(let i = 0; i < settings.length + 1; i++){
+			for(let i = 0; i < settings.length; i++) {
 				let opt = $.extend(true, {}, options);
 
-				opt.series = [];
-				if(i >= settings.length) {
-					opt.plotOptions = {};
-					opt.chart.height = '80px';
-					opt.legend = {show: true, position: 'top'};
+				opt.series = prepareDataForPlot(series['data'][i], options['labels']);
 
-				} else {
-					opt.series = prepareDataForPlot(series['data'][i], options['labels']);
-				}
-				queue.push(opt);
-			}
-			
-			queue.forEach(function(opt, i) {
 				let chart = new ApexCharts(document.querySelector(containers[i]), opt);
 				chart.render();
 				
 				charts.push(chart);
-			});
+			};
 		});
 	</script>
 </body>
