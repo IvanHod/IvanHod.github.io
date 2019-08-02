@@ -13,14 +13,11 @@
 </head>
 <body>
 	<div class="wrapper">
-		<nav class="sidebar">
+		<nav class="sidebar sidebar-sticky">
 			<div class="sidebar-content">
 				<a class="sidebar-brand" href="index.html">
 					<img src="img/project/logo.png" alt="">
 				</a>
-				<!--a class="navbar-brand" href="/">
-					<img src="/img/project/logo.png" alt="">
-				</a-->
 					
 				<ul class="sidebar-nav">
 					<li class="sidebar-item active">
@@ -33,51 +30,16 @@
 							<span class="">Обеспечение сырьем</span>
 						</a>
 					</li>
-					<!--li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Избранное</span>
+					<li class="sidebar-item">
+						<a href="cuttings.html" class="sidebar-link">
+							<span class="">Лесосеки</span>
 						</a>
 					</li>
 					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Производство целлюлозы</span>
+						<a href="area-searching.html" class="sidebar-link">
+							<span class="">Поиск участка</span>
 						</a>
 					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Бумажное Производство</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Производство упаковочных материалов и гофроупаковки</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Реализация круглого леса и лесохимии</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Машины, механизмы и запчасти</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Транспортная доступность</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Склады</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Персонал</span>
-						</a>
-					</li>-->
 				</ul>
 			</div>
 		</nav>
@@ -117,28 +79,60 @@
 			
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h1 text-center mb-5">Поставки сырья</h1>
+					<h1 class="h3 mb-3">Сценарии поставки сырья</h1>
 					<div class="row mt-3">
 						<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
 							<div class="row">
 								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-0"></div>
+									<div class="card">
+										<div class="card-header">
+											<h5 class="card-title">Оптимальный сценарий собственной заготовки</h5>
+											<h6 class="card-subtitle text-muted"></h6>
+										</div>
+										<div class="card-body">
+											<div class="chart chart-sm">
+												<div id="apexcharts-column-0"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-1"></div>
+									<div class="card">
+										<div class="card-header">
+											<h5 class="card-title">Фактическая собственная заготовка</h5>
+											<h6 class="card-subtitle text-muted"></h6>
+										</div>
+										<div class="card-body">
+											<div class="chart chart-sm">
+												<div id="apexcharts-column-1"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-2"></div>
+									<div class="card">
+										<div class="card-header">
+											<h5 class="card-title">Оптимальный сценарий заготовки сторонникми ресурсами</h5>
+											<h6 class="card-subtitle text-muted"></h6>
+										</div>
+										<div class="card-body">
+											<div class="chart chart-sm">
+												<div id="apexcharts-column-2"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-3"></div>
+									<div class="card">
+										<div class="card-header">
+											<h5 class="card-title">Фактическая заготовка сторонними ресурсами</h5>
+											<h6 class="card-subtitle text-muted"></h6>
+										</div>
+										<div class="card-body">
+											<div class="chart chart-sm">
+												<div id="apexcharts-column-3"></div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

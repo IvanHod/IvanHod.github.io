@@ -18,9 +18,6 @@
 				<a class="sidebar-brand" href="index.html">
 					<img src="img/project/logo.png" alt="">
 				</a>
-				<!--a class="navbar-brand" href="/">
-					<img src="/img/project/logo.png" alt="">
-				</a-->
 					
 				<ul class="sidebar-nav">
 					<li class="sidebar-item">
@@ -33,51 +30,16 @@
 							<span class="">Обеспечение сырьем</span>
 						</a>
 					</li>
-					<!--li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Избранное</span>
+					<li class="sidebar-item">
+						<a href="cuttings.html" class="sidebar-link">
+							<span class="">Лесосеки</span>
 						</a>
 					</li>
 					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Производство целлюлозы</span>
+						<a href="area-searching.html" class="sidebar-link">
+							<span class="">Поиск участка</span>
 						</a>
 					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Бумажное Производство</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Производство упаковочных материалов и гофроупаковки</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Реализация круглого леса и лесохимии</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Машины, механизмы и запчасти</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Транспортная доступность</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Склады</span>
-						</a>
-					</li>
-					<li class="sidebar-item">
-						<a href="/" class="sidebar-link">
-							<span class="">Персонал</span>
-						</a>
-					</li>-->
 				</ul>
 			</div>
 		</nav>
@@ -87,7 +49,6 @@
 					<i class="hamburger align-self-center"></i>
 				</a>
 				<form class="form-inline d-none d-sm-inline-block searching ml-5">
-					<!--i class="align-middle fas fa-fw fa-search"></i-->
 					<input class="form-control form-control-no-border mr-sm-2" type="text" placeholder="ПОИСК" aria-label="Search">
 				</form>
 
@@ -117,30 +78,62 @@
 			
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h1 text-center mb-5">Обеспечение сырьем</h1>
+                    <h1 class="h3 mb-3">Сценарии поставки сырья</h1>
 					<div class="row mt-3">
 						<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
 							<div class="row">
-								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-0"></div>
-									</div>
-								</div>
-								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-1"></div>
-									</div>
-								</div>
-								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-2"></div>
-									</div>
-								</div>
-								<div class="col-12 col-lg-6">
-									<div class="chart w-100">
-										<div id="apexcharts-column-3"></div>
-									</div>
-								</div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Инерционный сценарий балансы</h5>
+                                            <h6 class="card-subtitle text-muted"></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                    <div id="apexcharts-column-0"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Оптимизированный сценарий балансы</h5>
+                                            <h6 class="card-subtitle text-muted"></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <div id="apexcharts-column-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Инерционный сценарий щепа</h5>
+                                            <h6 class="card-subtitle text-muted"></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <div id="apexcharts-column-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Оптимизированный сценарий щепа</h5>
+                                            <h6 class="card-subtitle text-muted"></h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <div id="apexcharts-column-3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 						<div class="col-sm-12 col-lg-3 order-1 order-lg-2">
@@ -226,8 +219,7 @@
                 {'supply_partners_base': ['dlvrd_{}_chps.1'], 'demand': ['dmnd_{}_chps']},
                 {'supply_partners_optmzd': ['dlvrd_{}_chps.1'], 'demand': ['dmnd_{}_chps']}
             ];
-            titles = ['Инерционный сценарий балансы', 'Оптимизированный сценарий балансы', 'Инерционный сценарий щепа', 'Оптимизированный сценарий щепа']
-			ApexChartGroups(containers, settings, 'bar', titles);
+			ApexChartGroups(containers, settings, 'bar');
 			
 			$(document).on('change', 'select[name="year"]', function() {
 				redrawGroup(settings, 'bar');
