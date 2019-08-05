@@ -40,39 +40,41 @@
 							<span class="">Поиск участка</span>
 						</a>
 					</li>
+					<li class="sidebar-item">
+						<a href="gantt.html" class="sidebar-link">
+							<span class="">План поставок</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</nav>
 		<div class="main">
-			<nav class="navbar navbar-expand-lg navbar-light bg-white">
+			<nav class="navbar navbar-expand navbar-light bg-white">
 				<a class="sidebar-toggle d-flex mr-2">
 					<i class="hamburger align-self-center"></i>
 				</a>
-				<form class="form-inline d-none d-sm-inline-block searching ml-5">
-					<!--i class="align-middle fas fa-fw fa-search"></i-->
-					<input class="form-control form-control-no-border mr-sm-2" type="text" placeholder="ПОИСК" aria-label="Search">
+
+				<form class="form-inline d-none d-sm-inline-block">
+					<input class="form-control form-control-no-border mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
 				</form>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="top-navbar">
+				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
-								<i class="align-middle mr-2" data-feather="bar-chart-2"></i><span class="align-middle">Аналитика</span>
-							</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
-								<i class="align-middle mr-2 fas fa-fw fa-people-carry"></i><span class="align-middle">Совет директоров</span>
-							</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
-								<i class="align-middle mr-2" data-feather="clipboard"></i><span class="align-middle">СМИ</span>
-							</a>
-						</li>
+						<li class="nav-item dropdown"><a href="#" class="nav-icon">
+								<i class="align-middle" data-feather="bar-chart-2"></i>
+								<span class="align-middle">Аналитика</span></a></li>
+						<li class="nav-item dropdown"><a href="#" class="nav-icon">
+								<i class="align-middle" data-feather="users"></i>
+								<span class="align-middle">Совет директоров</span>
+							</a></li>
+						<!--li class="nav-item dropdown"><a href="#" class="nav-icon">
+								<i class="align-middle" data-feather="user"></i>
+								<span class="align-middle">Правление</span>
+							</a></li-->
+						<li class="nav-item dropdown"><a href="#" class="nav-icon">
+								<i class="align-middle" data-feather="tv"></i>
+								<span class="align-middle">СМИ</span>
+							</a></li>
 					</ul>
 				</div>
 			</nav>
