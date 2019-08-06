@@ -81,6 +81,18 @@
 			
 			<main class="content">
                 <h1 class="h3 mb-3">План поставок</h1>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Объем поставок</h5>
+                            </div>
+                            <div class="card-body">
+                                <input type="text" class="js-range-slider" id="range-distance" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12 col-xl-12">
                         <div class="card">
@@ -123,59 +135,89 @@
 	</div>
 	<script src="js/app.js"></script>
 	<script>
+
+        function filterData(minVolume, maxVolume) {
+            data.data.dlvry.values
+        }
+        
+		$(function() {
+            let volumes = data.data.dlvry.values.map(v => v['volume']);
+            let minVal = Math.round(Math.min(...volumes)), maxVal = Math.round(Math.max(...volumes));
+
+            $("#range-distance").ionRangeSlider({
+                type: "double",
+                min: minVal,
+                max: maxVal,
+                from: minVal,
+                to: maxVal,
+                grid: true,
+                onFinish: function(a) {
+                    chart.data = chart.defaultData.filter(v => v['volume'] > a.from && v['volume'] < a.to);
+                }
+            });
+        });
+
         am4core.ready(function() {
 
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
 
-        var chart = am4core.create("gantt", am4charts.XYChart);
-        //chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+            var chart = am4core.create("gantt", am4charts.XYChart);
+            //chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-        //chart.paddingRight = 30;
-        chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
+            //chart.paddingRight = 30;
+            chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
-        var colorSet = new am4core.ColorSet();
-        colorSet.saturation = 1;
-        colorsArray = [
-            "#006634", "#80c55b", "#f0002b", "#767876", "#8A999D", colorSet.getIndex(12).brighten(1),
-            colorSet.getIndex(14).brighten(1), colorSet.getIndex(16).brighten(1), colorSet.getIndex(18).brighten(1),
-            colorSet.getIndex(20).brighten(1), colorSet.getIndex(22).brighten(1), colorSet.getIndex(24).brighten(1)
-        ];
-        colors = {};
-        
+            var colorSet = new am4core.ColorSet();
+            colorSet.saturation = 1;
+            colorsArray = [
+                "#006634", "#80c55b", "#f0002b", "#767876", "#8A999D", colorSet.getIndex(12).brighten(1),
+                colorSet.getIndex(14).brighten(1), colorSet.getIndex(16).brighten(1), colorSet.getIndex(18).brighten(1),
+                colorSet.getIndex(20).brighten(1), colorSet.getIndex(22).brighten(1), colorSet.getIndex(24).brighten(1)
+            ];
+            colors = {};
+            let names = {Partner: 'Подрядчик ', Team: 'Участок '}
+            
+            window.chart = chart;
+            chart.data = data.data.dlvry.values.map(function(v) {
+                if (!Object.keys(colors).includes(v['source'])) {
+                    colors[v['source']] = colorsArray[Object.keys(colors).length];
+                }
+                return {
+                    name: names[v['source'].slice(0, -1)] + ' ' + v['source'].substr(-1),
+                    fromDate: v['date_start'],
+                    toDate: v['date_end'],
+                    color: colors[v['source']],
+                    volume: v['volume']
+                }
+            });
+            chart.defaultData = chart.data;
 
-        chart.data = data.data.dlvry.values.map(function(v) {
-            if (!Object.keys(colors).includes(v['source'])) {
-                colors[v['source']] = colorsArray[Object.keys(colors).length];
-            }
-            return {name: v['source'], fromDate: v['date_start'], toDate: v['date_end'], color: colors[v['source']]}
-        }).slice(0, 1000);
+            var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "name";
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.inversed = true;
 
-        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "name";
-        categoryAxis.renderer.grid.template.location = 0;
-        categoryAxis.renderer.inversed = true;
+            var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+            dateAxis.dateFormatter.dateFormat = "yyyy-MM-dd";
+            dateAxis.strictMinMax = true;
+            dateAxis.renderer.tooltipLocation = 0;
 
-        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.dateFormatter.dateFormat = "yyyy-MM-dd";
-        dateAxis.strictMinMax = true;
-        dateAxis.renderer.tooltipLocation = 0;
+            var series1 = chart.series.push(new am4charts.ColumnSeries());
+            //series1.columns.template.width = am4core.percent(80);
+            series1.columns.template.tooltipText = "{name}: {openDateX} - {dateX}";
 
-        var series1 = chart.series.push(new am4charts.ColumnSeries());
-        //series1.columns.template.width = am4core.percent(80);
-        series1.columns.template.tooltipText = "{name}: {openDateX} - {dateX}";
+            series1.dataFields.openDateX = "fromDate";
+            series1.dataFields.dateX = "toDate";
+            series1.dataFields.categoryY = "name";
+            series1.columns.template.propertyFields.fill = "color"; // get color from data
+            series1.columns.template.propertyFields.stroke = "color";
+            series1.columns.template.strokeOpacity = 1;
 
-        series1.dataFields.openDateX = "fromDate";
-        series1.dataFields.dateX = "toDate";
-        series1.dataFields.categoryY = "name";
-        series1.columns.template.propertyFields.fill = "color"; // get color from data
-        series1.columns.template.propertyFields.stroke = "color";
-        series1.columns.template.strokeOpacity = 1;
+            chart.scrollbarX = new am4core.Scrollbar();
 
-        chart.scrollbarX = new am4core.Scrollbar();
-
-    }); // end am4core.ready()
+        }); // end am4core.ready()
 	</script>
 </body>
 </html>
