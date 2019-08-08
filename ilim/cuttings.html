@@ -67,10 +67,6 @@
 								<i class="align-middle" data-feather="users"></i>
 								<span class="align-middle">Совет директоров</span>
 							</a></li>
-						<!--li class="nav-item dropdown"><a href="#" class="nav-icon">
-								<i class="align-middle" data-feather="user"></i>
-								<span class="align-middle">Правление</span>
-							</a></li-->
 						<li class="nav-item dropdown"><a href="#" class="nav-icon">
 								<i class="align-middle" data-feather="tv"></i>
 								<span class="align-middle">СМИ</span>
@@ -81,11 +77,70 @@
 			
 			<main class="content">
 				<div class="container-fluid p-0">
+					<div class="row widgets">
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-primary" data-feather="shopping-cart"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Всего древесины - <span class="widget-distance">100 км</span>, тыс. м<sup>3</sup></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-warning" data-feather="activity"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Всего древесины - <span class="widget-distance">200 км</span>, тыс. м<sup>3</sup></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-success" data-feather="dollar-sign"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Всего древесины - <span class="widget-distance">300 км</span>, тыс. м<sup>3</sup></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="row mt-3">
 						<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">Лесосеки</h5>
+                                    <h5 class="card-title">Объемные характеристики участков под вырубку (лесосеки)</h5>
                                     <h6 class="card-subtitle text-muted"></h6>
                                 </div>
                                 <div class="card-body">
@@ -117,11 +172,11 @@
 								<div class="card-body">
 									<label class="custom-control custom-radio">
 										<input name="units" type="radio" class="custom-control-input" checked value="square" data-text="м2">
-										<span class="custom-control-label">Площадь, м<sup>2</sup></span>
+										<span class="custom-control-label">Площадь, тыс. м<sup>2</sup></span>
 									</label>
 									<label class="custom-control custom-radio">
 										<input name="units" type="radio" class="custom-control-input" value="forest" data-text="м3">
-										<span class="custom-control-label">Объем, м<sup>3</sup></span>
+										<span class="custom-control-label">Объем, тыс. м<sup>3</sup></span>
 									</label>
 								</div>
 							</div>
@@ -161,6 +216,28 @@
 	</div>
 	<script src="js/app.js"></script>
 	<script>
+
+		function prepareDataForPlot(datasets) {
+			return Object.keys(datasets['data']).map(function(i) {
+					return {
+						data: datasets['data'][i].map(a => a / 1000),
+						label: datasets['labels'][i],
+						backgroundColor: colors[i],
+						borderColor: colors[i],
+						hoverBackgroundColor: colors[i],
+						hoverBorderColor: colors[i],
+					}
+				});
+		}
+
+		let settings = [
+			{'areas': ['{}_prtnr_ngctn']},
+			{'areas': ['{}_prtnr_rfs']},
+			{'areas': ['{}_prtnr_dld']},
+			{'areas': ['{}_prtnr_new']},
+			{'areas': ['{}_ilim']}
+		];
+			
 		$(function() {
             $("#range-distance").ionRangeSlider({
                 onChange: function() {
@@ -171,6 +248,12 @@
                     chart.update();
                 }
             });
+			
+			updateWidgets([
+				prepareData(settings, 'distance;1;101', 'forest').data,
+				prepareData(settings, 'distance;100;201', 'forest').data,
+				prepareData(settings, 'distance;200;301', 'forest').data
+			]);
 
             $(document).on('click', 'input[name="units"]', function() {
                 let datasets = prepareData(settings, 'distance');
@@ -178,30 +261,9 @@
                 chart.data.labels = datasets['xlabels'];
                 chart.data.datasets = prepareDataForPlot(datasets);
                 chart.update();
-            });
-
-            let settings = [
-                {'areas': ['{}_ilim']},
-                {'areas': ['{}_prtnr_ngctn']},
-                {'areas': ['{}_prtnr_rfs']},
-                {'areas': ['{}_prtnr_dld']},
-                {'areas': ['{}_prtnr_new']},
-            ];
-            let colors = ["#006634", "#80c55b", "#f0002b", "#767876", "#8A999D"];
-            let datasets = prepareData(settings, 'distance');
-
-            function prepareDataForPlot(datasets) {
-                return Object.keys(datasets['data']).map(function(i) {
-                        return {
-                            data: datasets['data'][i],
-                            label: datasets['labels'][i],
-                            backgroundColor: colors[i],
-                            borderColor: colors[i],
-                            hoverBackgroundColor: colors[i],
-                            hoverBorderColor: colors[i],
-                        }
-                    });
-            }
+			});
+			
+			let datasets = prepareData(settings, 'distance');
         
             // Bar chart
             let chart = new Chart(document.getElementById("chartjs-bar-full"), {
@@ -237,14 +299,6 @@
                             scaleLabel: {
                                 display: true,
                                 labelString: "Расстояние от комбината, км.",
-                                padding: 20
-                            },
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Объем лесосек',
                                 padding: 20
                             },
                             stacked: true

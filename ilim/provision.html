@@ -81,14 +81,92 @@
 			
 			<main class="content">
 				<div class="container-fluid p-0">
-                    <h1 class="h3 mb-3">Сценарии поставки сырья</h1>
+                    <h1 class="h3 mb-3">Обеспечение сырьем</h1>
+					<div class="row widgets">
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-primary" data-feather="shopping-cart"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Годовые поставки балансов, тыс. м3</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-warning" data-feather="activity"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Годовые поставки балансов, млн. руб</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-success" data-feather="dollar-sign"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Годовые поставки щепы, тыс. м3</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<i class="feather-lg text-danger" data-feather="shopping-bag"></i>
+										</div>
+										<div class="media-body">
+											<h3 class="mb-2">
+												<div class="spinner-border text-dark mr-2" role="status">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</h3>
+											<div class="mb-0">Годовые поставки щепы, млн. руб</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="row mt-3">
 						<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
 							<div class="row">
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Оптимальный сценарий заготовки балансов</h5>
+                                            <h5 class="card-title">Оптимальный сценарий заготовки балансов, тыс. м<sup>3</sup></h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -101,7 +179,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Фактическая заготовка балансов</h5>
+                                            <h5 class="card-title">Фактическая заготовка балансов, тыс. м<sup>3</sup></h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -114,7 +192,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Оптимальный сценарий заготовки щепы</h5>
+                                            <h5 class="card-title">Оптимальный сценарий заготовки щепы, тыс. м<sup>3</sup></h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -127,7 +205,7 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-title">Фактическая заготовка цепы</h5>
+                                            <h5 class="card-title">Фактическая заготовка цепы, тыс. м<sup>3</sup></h5>
                                             <h6 class="card-subtitle text-muted"></h6>
                                         </div>
                                         <div class="card-body">
@@ -212,23 +290,33 @@
 	<script src="js/app.js"></script>
 	<script>
 		
+		var charts = [];
+		let widgetsSettings = [
+			{supply_partners_optmzd: ['dlvrd_sft_frst.1', 'dlvrd_hrd_frst.1']},
+			{supply_partners_optmzd: ['prc_sft_frst', 'prc_hrd_frst']},
+			{supply_partners_optmzd: ['dlvrd_sft_chps.1', 'dlvrd_hrd_chps.1']},
+			{supply_partners_optmzd: ['prc_sft_chps', 'prc_hrd_chps']},
+		];
+
 		function redrawGroup(settings) {
 			series = prepareData(settings);
 
 			for (let i in series['data']) {
 				charts[i].updateSeries(prepareDataForPlot(series['data'][i], series['labels']));
 			}
+
+			updateWidgets(prepareData(widgetsSettings, 'date', null, false).data, true);
 		}
 
 		function prepareDataForPlot(data, names) {
 			return Object.keys(data).map(function(i) {return {data: data[i], name: names[i]}})
 		}
 
-		var charts = [];
-
 		$(function() {
 
-            createIntervalFilter();
+			createIntervalFilter();
+			
+			updateWidgets(prepareData(widgetsSettings).data, 'date', null, false)
 			
 			$(document).on('change', 'select[name="year"]', function() {
 				redrawGroup(settings);
@@ -242,22 +330,18 @@
 				chart: {
 					type: "bar"
 				},
+				colors: colors,
 				dataLabels: {
 					enabled: false
 				},
 				tooltip: {
 					y: {
-						formatter: function(val) {
-							return (Math.round(val * 100) / 100) + " м3"
-						}
+						formatter: val => (Math.round(val * 100) / 100) + " м<sup>3</sup>"
 					}
 				},
 				yaxis: {
-					title: {
-						text: "м3"
-					},
 					labels: {
-						formatter: (val) => {return Math.round(val * 100) / 100}
+						formatter: (val) => Math.round(val * 100) / 100
 					}
 				},
 				xaxis: {
@@ -274,6 +358,13 @@
 						columnWidth: "50%",
 					}
 				},
+				legend: {
+					itemMargin: {
+						vertical: 15,
+						horizontal: 5
+					},
+					offsetY: -12,
+				}
 			}
             
             let containers = ['#apexcharts-column-0', '#apexcharts-column-1', '#apexcharts-column-2', '#apexcharts-column-3'];
@@ -285,6 +376,7 @@
             ];
 
 			let series = prepareData(settings);
+			series.data = series.data.map(a => a.map(b => b.map(c => c / 1000)));
 			
 			options['labels'] = ['Поставки сырья на комбинат', 'Потребление комбинатом сырья'];
 			options['xaxis']['categories'] = series['xlabels']

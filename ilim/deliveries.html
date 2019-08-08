@@ -82,109 +82,188 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3">Сценарии поставки сырья</h1>
-					<div class="row mt-3">
-						<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
-							<div class="row">
-								<div class="col-12 col-lg-6">
-									<div class="card">
-										<div class="card-header">
-											<h5 class="card-title">Оптимальный сценарий собственной заготовки</h5>
-											<h6 class="card-subtitle text-muted"></h6>
-										</div>
-										<div class="card-body">
-											<div class="chart chart-sm">
-												<div id="apexcharts-column-0"></div>
+					<div class="main">
+						<div class="row widgets">
+							<div class="col-12 col-sm-6 col-xl d-flex">
+								<div class="card flex-fill">
+									<div class="card-body py-4">
+										<div class="media">
+											<div class="d-inline-block mt-2 mr-3">
+												<i class="feather-lg text-primary" data-feather="shopping-cart"></i>
+											</div>
+											<div class="media-body">
+												<h3 class="mb-2">
+													<div class="spinner-border text-dark mr-2" role="status">
+														<span class="sr-only">Loading...</span>
+													</div>
+												</h3>
+												<div class="mb-0">Годовая собственная заготовка, тыс. м3</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-12 col-lg-6">
-									<div class="card">
-										<div class="card-header">
-											<h5 class="card-title">Фактическая собственная заготовка</h5>
-											<h6 class="card-subtitle text-muted"></h6>
-										</div>
-										<div class="card-body">
-											<div class="chart chart-sm">
-												<div id="apexcharts-column-1"></div>
+							</div>
+							<div class="col-12 col-sm-6 col-xl d-flex">
+								<div class="card flex-fill">
+									<div class="card-body py-4">
+										<div class="media">
+											<div class="d-inline-block mt-2 mr-3">
+												<i class="feather-lg text-warning" data-feather="activity"></i>
+											</div>
+											<div class="media-body">
+												<h3 class="mb-2">
+													<div class="spinner-border text-dark mr-2" role="status">
+														<span class="sr-only">Loading...</span>
+													</div>
+												</h3>
+												<div class="mb-0">Годовая собственная заготовка, млн. руб</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-12 col-lg-6">
-									<div class="card">
-										<div class="card-header">
-											<h5 class="card-title">Оптимальный сценарий заготовки сторонникми ресурсами</h5>
-											<h6 class="card-subtitle text-muted"></h6>
-										</div>
-										<div class="card-body">
-											<div class="chart chart-sm">
-												<div id="apexcharts-column-2"></div>
+							</div>
+							<div class="col-12 col-sm-6 col-xl d-flex">
+								<div class="card flex-fill">
+									<div class="card-body py-4">
+										<div class="media">
+											<div class="d-inline-block mt-2 mr-3">
+												<i class="feather-lg text-success" data-feather="dollar-sign"></i>
+											</div>
+											<div class="media-body">
+												<h3 class="mb-2">
+													<div class="spinner-border text-dark mr-2" role="status">
+														<span class="sr-only">Loading...</span>
+													</div>
+												</h3>
+												<div class="mb-0">Годовая сторонняя заготовка, тыс. м3</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-12 col-lg-6">
-									<div class="card">
-										<div class="card-header">
-											<h5 class="card-title">Фактическая заготовка сторонними ресурсами</h5>
-											<h6 class="card-subtitle text-muted"></h6>
-										</div>
-										<div class="card-body">
-											<div class="chart chart-sm">
-												<div id="apexcharts-column-3"></div>
+							</div>
+							<div class="col-12 col-sm-6 col-xl d-flex">
+								<div class="card flex-fill">
+									<div class="card-body py-4">
+										<div class="media">
+											<div class="d-inline-block mt-2 mr-3">
+												<i class="feather-lg text-danger" data-feather="shopping-bag"></i>
+											</div>
+											<div class="media-body">
+												<h3 class="mb-2">
+													<div class="spinner-border text-dark mr-2" role="status">
+														<span class="sr-only">Loading...</span>
+													</div>
+												</h3>
+												<div class="mb-0">Годовая сторонняя заготовка, млн. руб</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-12 col-lg-3 order-1 order-lg-2">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Период</h5>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<label class="col-12">Год:</label>
-										<div class="col-12">
-											<select class="custom-select flex-grow-1" name="year">
-												<option>Не выбран...</option>
-											</select>
+						<div class="row mt-3">
+							<div class="col-sm-12 col-lg-9 order-2 order-lg-1">
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="card-title">Оптимальный сценарий собственной заготовки</h5>
+												<h6 class="card-subtitle text-muted"></h6>
+											</div>
+											<div class="card-body">
+												<div class="chart chart-sm">
+													<div id="apexcharts-column-0"></div>
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="row mt-3">
-										<label class="col-12">Месяц:</label>
-										<div class="col-12">
-											<select class="custom-select flex-grow-1" name="month">
-												<option>Не выбран...</option>
-											</select>
+									<div class="col-12 col-lg-6">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="card-title">Фактическая собственная заготовка</h5>
+												<h6 class="card-subtitle text-muted"></h6>
+											</div>
+											<div class="card-body">
+												<div class="chart chart-sm">
+													<div id="apexcharts-column-1"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="card-title">Оптимальный сценарий заготовки сторонникми ресурсами</h5>
+												<h6 class="card-subtitle text-muted"></h6>
+											</div>
+											<div class="card-body">
+												<div class="chart chart-sm">
+													<div id="apexcharts-column-2"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="card-title">Фактическая заготовка сторонними ресурсами</h5>
+												<h6 class="card-subtitle text-muted"></h6>
+											</div>
+											<div class="card-body">
+												<div class="chart chart-sm">
+													<div id="apexcharts-column-3"></div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Единицы измерения</h5>
+							<div class="col-sm-12 col-lg-3 order-1 order-lg-2">
+								<div class="card">
+									<div class="card-header">
+										<h5 class="card-title mb-0">Период</h5>
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<label class="col-12">Год:</label>
+											<div class="col-12">
+												<select class="custom-select flex-grow-1" name="year">
+													<option>Не выбран...</option>
+												</select>
+											</div>
+										</div>
+										<div class="row mt-3">
+											<label class="col-12">Месяц:</label>
+											<div class="col-12">
+												<select class="custom-select flex-grow-1" name="month">
+													<option>Не выбран...</option>
+												</select>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="card-body">
-									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" checked value="dlvrd" data-text="тыс. м3">
-										<span class="custom-control-label">Объем, тыс. м<sup>3</sup></span>
-									</label>
-									<label class="custom-control custom-radio">
-										<input name="units" type="radio" class="custom-control-input" value="dlvrd*prc" data-text="тыс. руб">
-										<span class="custom-control-label">Стоимость, тыс. руб</span>
-									</label>
+								<div class="card">
+									<div class="card-header">
+										<h5 class="card-title mb-0">Единицы измерения</h5>
+									</div>
+									<div class="card-body">
+										<label class="custom-control custom-radio">
+											<input name="units" type="radio" class="custom-control-input" checked value="dlvrd" data-text="тыс. м3">
+											<span class="custom-control-label">Объем, тыс. м<sup>3</sup></span>
+										</label>
+										<label class="custom-control custom-radio">
+											<input name="units" type="radio" class="custom-control-input" value="dlvrd*prc" data-text="тыс. руб">
+											<span class="custom-control-label">Стоимость, тыс. руб</span>
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-10">
-							<div id="apexcharts-legend"></div>
+						<div class="row">
+							<div class="col-10">
+								<div id="apexcharts-legend"></div>
+							</div>
 						</div>
-					</div>
 				</div>
 			</main>
 
@@ -220,6 +299,12 @@
 	<script src="js/app.js"></script>
 	<script>
 		var charts = [];
+		let widgetsSettings = [
+			{supply_ilim_base: ['dlvrd_sft_frst', 'dlvrd_hrd_frst','dlvrd_sft_chps', 'dlvrd_hrd_chps']},
+			{supply_ilim_base: ['prc_sft_frst', 'prc_hrd_frst','prc_sft_chps', 'prc_hrd_chps']},
+			{supply_partners_base: ['dlvrd_sft_frst', 'dlvrd_hrd_frst','dlvrd_sft_chps', 'dlvrd_hrd_chps']},
+			{supply_partners_base: ['prc_sft_frst', 'prc_hrd_frst','prc_sft_chps', 'prc_hrd_chps']}
+		];
 
 		function redrawGroup(settings) {
 			let val = $('input[name="units"]:checked').val().split('*');
@@ -248,13 +333,16 @@
 		}
 
 		$(function() {
-
 			createIntervalFilter();
-			
+
+			updateWidgets(prepareData(widgetsSettings, 'date', null, false).data)
+
 			$(document).on('change', 'select[name="year"]', function() {
 				createIntervalFilter();
 
 				redrawGroup(settings);
+				
+				updateWidgets(prepareData(widgetsSettings, 'date', null, false).data)
 			});
 
 			$(document).on('change', 'select[name="month"]', function() {
@@ -266,6 +354,7 @@
 			});
 
 			var options = {
+				colors: colors,
 				chart: {
 					type: "donut"
 				},
@@ -297,6 +386,10 @@
 				},
 				legend: {
 					show: false,
+					fontSize: '22px',
+					itemMargin: {
+						vertical: 20
+					},
 				}
 			}
 			
@@ -314,14 +407,14 @@
 			options['labels'] = series['labels'].filter(function(item, pos, self) {return self.indexOf(item) == pos});
 
 			let queue = [];
-			for(let i = 0; i < settings.length + 1; i++){
+			for(let i = 0; i < settings.length + 1; i++) {
 				let opt = $.extend(true, {}, options);
 
 				opt.series = [];
 				if(i >= settings.length) {
 					opt.plotOptions = {};
 					opt.chart.height = '80px';
-					opt.legend = {show: true, position: 'top'};
+					opt.legend = Object.assign({}, opt.legend, {show: true, position: 'top'});
 
 				} else {
 					opt.series = series['data'][i];
