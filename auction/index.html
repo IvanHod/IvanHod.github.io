@@ -175,6 +175,98 @@
       }
     </script>
 
+    <div class="modal fade" id="modal-auth">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="circle top-circle"></div>
+          <div class="circle right-circle"></div>
+          <div class="circle bottom-circle"></div>
+          <div class="modal-header">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signup-block" role="tab">Регистрация</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="signin-tab" data-toggle="tab" href="#signin-block" role="tab">Авторизация</a>
+              </li>
+            </ul>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="signup-block" role="tabpanel" aria-labelledby="home-tab">
+                <form method="post" class="ajax-post" action="#" role="form">
+                  <div data-btn="Зарегестироваться">
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="email" required placeholder="E-mail">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="username" required placeholder="Имя пользователя">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="password1" type="password" placeholder="Пароль">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="password2" type="password" placeholder="Повторите пароль">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" name="is_artist" id="is_artist">
+                          <label class="custom-control-label" for="is_artist">Я художник</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+              <div class="tab-pane fade" id="signin-block" role="tabpanel" aria-labelledby="profile-tab">
+                <form method="post" class="ajax-post" action="#" role="form">
+                  <div data-btn="Войти">
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="username" required placeholder="Имя пользователя">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12">
+                        <input class="form-control" name="password" type="password" placeholder="Пароль">
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-md-12 error-messages"></div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-primary to_action">Сохранить</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
   </div>
   <footer class="page-footer pt-4">
     <div class="container-fluid text-center">
@@ -209,98 +301,6 @@
 </body>
 
 </html>
-
-<div class="modal fade" id="modal-auth">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="circle top-circle"></div>
-      <div class="circle right-circle"></div>
-      <div class="circle bottom-circle"></div>
-      <div class="modal-header">
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signup-block" role="tab">Регистрация</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="signin-tab" data-toggle="tab" href="#signin-block" role="tab">Авторизация</a>
-          </li>
-        </ul>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="tab-content">
-          <div class="tab-pane fade show active" id="signup-block" role="tabpanel" aria-labelledby="home-tab">
-            <form method="post" class="ajax-post" action="#" role="form">
-              <div data-btn="Зарегестироваться">
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="email" required placeholder="E-mail">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="username" required placeholder="Имя пользователя">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="password1" type="password" placeholder="Пароль">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="password2" type="password" placeholder="Повторите пароль">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" name="is_artist" id="is_artist">
-                      <label class="custom-control-label" for="is_artist">Я художник</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </form>
-          </div>
-          <div class="tab-pane fade" id="signin-block" role="tabpanel" aria-labelledby="profile-tab">
-            <form method="post" class="ajax-post" action="#" role="form">
-              <div data-btn="Войти">
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="username" required placeholder="Имя пользователя">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input class="form-control" name="password" type="password" placeholder="Пароль">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                </div>
-                <div class="row form-group">
-                  <div class="col-md-12 error-messages"></div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Отмена</button>
-        <button type="submit" class="btn btn-primary to_action">Сохранить</button>
-      </div>
-    </div>
-    </form>
-  </div>
-</div>
 
 <script>
   var slider = multiItemSlider('.slider');
