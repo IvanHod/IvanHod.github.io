@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="shortcut icon" href="favicon/favicon.ico">
+  <link rel="stylesheet" href="styles/main.css">
+
+  <title>Главная</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm">
+      <a class="navbar-brand" href="/">
+        <img class="img-fluid" src="images/logo-100.jpg">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav w-100 nav-justified">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Аукцион</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery">Галерея</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artists">Художники</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog">Блог</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about-us">О нас</a>
+          </li>
+          <span class="oi oi-account-login"></span>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="slider">
+          <div class="slider__wrapper">
+            <div class="slider__item">
+              <div>
+                <img class="img-fluid" src="images/1.jpg" alt="The first image of slide">
+              </div>
+            </div>
+            <div class="slider__item">
+              <div>
+                <img class="img-fluid" src="images/2.jpg" alt="The second image of slide">
+              </div>
+            </div>
+            <div class="slider__item">
+              <div>
+                <img class="img-fluid" src="images/3.jpg" alt="The third image of slide">
+              </div>
+            </div>
+          </div>
+          <a class="slider__control slider__control_left" href="#" role="button"></a>
+          <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="timer-block">
+      <div class="h3 text-uppercase text-center">
+        До аукциона осталось
+      </div>
+      <div class="h5 text-center">
+        3 дня 10 часов 53 минуты 40 секунд
+      </div>
+    </div>
+
+    <div id="filter-block-head" class="row">
+      <div class="col-md-12">
+        <span class="oi oi-project icon-filter"></span>
+        <div class="search-block">
+          <input class="search-input" type="text">
+          <svg viewBox="0 0 200 35" class="search">
+            <path class="icon" fill="none" d="
+                    M 40, 15
+                    h -15
+                    a 10,10 0 1,0 -20,0
+                    a 10,10 0 1,0 20,0
+                " transform="rotate(45 15 15)">
+            </path>
+            <line x1="30" y1="32" x2="200" y2="32" class="search-underline"></line>
+            <path class="x" d="
+                    m 190,10 -10,12
+                    c 0,0 -3,3 -3,5
+                        -1,5 5,5 7,5
+                "></path>
+            <path class="x" d="
+                    m 180,10 10,12
+                    c 0,0 3,3 3,5
+                        1,5 -5,5 -7,5
+                "></path>
+          </svg>
+          <div class="search-layout"></div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-navigator">
+      <div id="filter-nav-city" class="filter-nav-item">Город</div>
+      <div id="filter-nav-section" class="filter-nav-item">Секция</div>
+      <div id="filter-nav-style" class="filter-nav-item">Стиль</div>
+      <div id="filter-nav-genre" class="filter-nav-item">Жанр</div>
+    </div>
+    <div class="filter-body">
+      <div id="filter-body-city" class="filter-body-elements" data-name="city">
+        <div class="filter-item" data-value="1">Санкт-Петербург</div>
+        <div class="filter-item" data-value="2">Москва</div>
+        <div class="filter-item" data-value="3">Краснодар</div>
+        <div class="filter-item" data-value="4">Волгоград</div>
+      </div>
+      <div id="filter-body-section" class="filter-body-elements" data-name="section">
+        <div class="filter-item" data-value="1">Секция 1</div>
+        <div class="filter-item" data-value="2">Секция 2</div>
+        <div class="filter-item" data-value="3">Секция 3</div>
+        <div class="filter-item" data-value="4">Секция 4</div>
+      </div>
+      <div id="filter-body-style" class="filter-body-elements" data-name="style">
+        <div class="filter-item" data-value="1">Стиль 1</div>
+        <div class="filter-item" data-value="2">Стиль 2</div>
+        <div class="filter-item" data-value="3">Стиль 3</div>
+        <div class="filter-item" data-value="4">Стиль 4</div>
+      </div>
+      <div id="filter-body-genre" class="filter-body-elements" data-name="genre">
+        <div class="filter-item" data-value="1">Жанр 1</div>
+        <div class="filter-item" data-value="1">Жанр 2</div>
+        <div class="filter-item" data-value="1">Жанр 3</div>
+        <div class="filter-item" data-value="1">Жанр 4</div>
+      </div>
+    </div>
+
+
+    <div class="content mt-3 pb-4">
+      <div id="grid" class="grid-images row pb-5">
+        <figure id="default-el" class="picture-item col-lg-3 col-md-4 col-12 d-none" data-city="" data-section="" data-genre="" data-style="style" data-description=''>
+          <div class="aspect aspect--9x80">
+            <a href="#">
+              <div class="aspect__inner">
+                <span class="image-top-label">Отчаенное исскуство</span>
+                <img alt="" src="images/grid-4.jpg">
+              </div>
+            </a>
+          </div>
+        </figure>
+
+        <div class="col-lg-3 col-md-4 col-12 my-sizer-element"></div>
+      </div>
+    </div>
+
+    <script>
+      let defaultNode = document.getElementById('default-el');
+      defaultNode.remove();
+
+      let grid = document.getElementById('grid');
+      let gridSizeElement = document.getElementsByClassName('my-sizer-element')[0];
+
+      for (let i = 0; i < 15; i++) {
+        let dupNode = defaultNode.cloneNode(true);
+        dupNode.classList.remove('d-none');
+        dupNode.getElementsByTagName('img')[0].setAttribute('src', 'images/grid-' + Math.floor(Math.random() * (11 - 1) + 1) + '.jpg');
+
+        ['city', 'section', 'genre', 'style'].forEach(function(key) {
+          dupNode.setAttribute('data-' + key, Math.floor(Math.random() * (5 - 1) + 1));
+        });
+
+        grid.insertBefore(dupNode, gridSizeElement);
+      }
+    </script>
+
+  </div>
+  <footer class="page-footer pt-4">
+    <div class="container-fluid text-center">
+      <ul class="footer-nav list-inline text-center">
+        <li class="list-inline-item"><a href="/">Аукцион</a></li>
+        <li class="list-inline-item"><a href="/">Галерея</a></li>
+        <li class="list-inline-item"><a href="/">Художники</a></li>
+        <li class="list-inline-item"><a href="/">Блог</a></li>
+        <li class="list-inline-item"><a href="/">О нас</a></li>
+      </ul>
+      <div class="row footer-contacts">
+        <div class="col-md-6 text-sm-center  text-md-right">
+          Контакты:
+        </div>
+        <div class="col-md-6 text-sm-center text-md-left">
+          8 (928) 662-44-05<br>
+          8 (928) 662-44-05
+        </div>
+      </div>
+      <div class="footer-social-media">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">Twitter</li>
+          <li class="list-inline-item">intagram</li>
+          <li class="list-inline-item">vk</li>
+          <li class="list-inline-item">facebook</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
+
+<div class="modal fade" id="modal-auth">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="circle top-circle"></div>
+      <div class="circle right-circle"></div>
+      <div class="circle bottom-circle"></div>
+      <div class="modal-header">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signup-block" role="tab">Регистрация</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="signin-tab" data-toggle="tab" href="#signin-block" role="tab">Авторизация</a>
+          </li>
+        </ul>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="signup-block" role="tabpanel" aria-labelledby="home-tab">
+            <form method="post" class="ajax-post" action="#" role="form">
+              <div data-btn="Зарегестироваться">
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="email" required placeholder="E-mail">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="username" required placeholder="Имя пользователя">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="password1" type="password" placeholder="Пароль">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="password2" type="password" placeholder="Повторите пароль">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="is_artist" id="is_artist">
+                      <label class="custom-control-label" for="is_artist">Я художник</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="tab-pane fade" id="signin-block" role="tabpanel" aria-labelledby="profile-tab">
+            <form method="post" class="ajax-post" action="#" role="form">
+              <div data-btn="Войти">
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="username" required placeholder="Имя пользователя">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input class="form-control" name="password" type="password" placeholder="Пароль">
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-12 error-messages"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Отмена</button>
+        <button type="submit" class="btn btn-primary to_action">Сохранить</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  var slider = multiItemSlider('.slider');
+
+  new FilterBlock('#filter-block-head');
+
+  let shuffleInstance = new Shuffle(document.getElementById('grid'), {
+    itemSelector: '.picture-item',
+    sizer: '.my-sizer-element',
+  });
+</script>
